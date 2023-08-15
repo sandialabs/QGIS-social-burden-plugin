@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/social_burden_calculator" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

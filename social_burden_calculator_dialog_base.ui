@@ -1,0 +1,1261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SocialBurdenCalculatorDialogBase</class>
+ <widget class="QDialog" name="SocialBurdenCalculatorDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1043</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>250</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Social Burden Calculator</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-1268</y>
+        <width>1006</width>
+        <height>1968</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>1950</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>260</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which is the layer with the information about the population groups?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Select Population Block LAYER:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>530</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column of the population block layer has the number of people in each population group?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for Population Counts:</string>
+          </property>
+         </widget>
+         <widget class="QgsMapLayerComboBox" name="layerComboBox_popBlock">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>270</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="longfield">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>470</y>
+            <width>111</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Longitude field</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="ComboBox_centroidLong">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>470</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="currentIndex">
+           <number>-1</number>
+          </property>
+          <property name="allowEmptyFieldName">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_9">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>370</y>
+            <width>401</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the population block layer is NOT a shapefile or otherwise have built-in polygon geometry, please provide the columns in the population block information table that give the latitudes and longitudes of the centroids of the population blocks.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;If the layer is a shapefile, this can be ignored, and the plugin will calculate the centroids itself.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Specify fields for population centroid lat/longs:</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="ComboBox_centroidLat">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>420</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="allowEmptyFieldName">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>590</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column in the population block layer gives the resources available to each population group? This might be median income or some other number describing the population groups' ability to access resources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for Attainment Factors:</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_hasCentroids">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>370</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_popCount">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>530</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Latfield">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>420</y>
+            <width>111</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Latitude field</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_attainmentFactor">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>590</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_facilitySector">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>760</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>660</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which layer contains the information about the facilities that provide services?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Select Facilities LAYER:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_facilityLatLongs">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>810</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>800</y>
+            <width>331</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If the facility layer is NOT a shapefile or otherwise have built-in point geometry, please provide the columns in the facility information table that give the latitudes and longitudes of the facilities.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;If the layer is a shapefile, this can be ignored, and the plugin will calculate the centroids itself.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Specify fields for facility lat/longs:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Latfield_2">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>870</y>
+            <width>91</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Latitude field</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>630</y>
+            <width>811</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="ComboBox_facilityLat">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>860</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="allowEmptyFieldName">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="Line" name="line_5">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>940</y>
+            <width>821</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLabel" name="longfield_2">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>910</y>
+            <width>111</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Longitude field</string>
+          </property>
+         </widget>
+         <widget class="QgsMapLayerComboBox" name="layerComboBox_facilities">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>660</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="ComboBox_facilityLong">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>900</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="currentIndex">
+           <number>-1</number>
+          </property>
+          <property name="allowEmptyFieldName">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_27">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>760</y>
+            <width>381</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column in the facility information layer contains the sector that the facility belongs to?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for facility sectors (e.g., grocery store)</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_5">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>820</y>
+            <width>301</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>(If shapefile, can leave unchecked.)</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_6">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1200</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Is there an exclusion profile layer? An exclusion profile layer describes an area where the facilities' ability to provide services is degraded.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Include exclusion profile layer: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1400</y>
+            <width>821</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_7">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1430</y>
+            <width>311</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click 'yes' if the results of the burden calculation should be exported to CSV. If yes, provide the paths to which to save the files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Export Output to Text File (csv):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="spinBox_exclusionPctReduction">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1360</y>
+            <width>291</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_8">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1570</y>
+            <width>841</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;*Note: Temporary table layers with the results are created and loaded in &lt;/p&gt;&lt;p&gt;project automatically either way. These optional outputs will be CSV.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1170</y>
+            <width>811</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QgsMapLayerComboBox" name="layerComboBox_sectorServiceMapping">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>970</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1070</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column in the sector to service mapping table contains the effort per foot?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for effort per foot:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>970</y>
+            <width>361</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which table contains the mappings from sectors (e.g., 'grocery stores') to services (e.g., 'food')? This table should include effort per foot and zero-distance effort terms.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="whatsThis">
+           <string>Sector to service mapping is a table that describes which facilities or types of facilities provide which services. For example, the rows could be &quot;grocery store&quot; or &quot;hospital&quot;, and the columns could be &quot;food&quot;, &quot;water&quot; or &quot;medical services&quot;. Individual facilities can be described by using unique row identifiers.</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Select Sector to Service Mapping TABLE:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1120</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column in the sector to service mapping table contains the zero-distance effort?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for zero-distance effort:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_28">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1020</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which column in the sector to service mapping table contains the sectors?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD for sectors (e.g., grocery store):</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_effortZeroDistance">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1120</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_outFileAggregatedPopulation">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1540</y>
+            <width>261</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_sectortoServiceSector">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1020</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="Line" name="line_4">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1870</y>
+            <width>821</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_29">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1350</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The facilities that lie in the exclusion layer's area have degraded services. Provide the percent by which these service levels are reduced.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Set % Reduction of Service:</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_effortPerFoot">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1070</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QgsMapLayerComboBox" name="layerComboBox_exclusion">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1280</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QDialogButtonBox" name="button_box">
+          <property name="geometry">
+           <rect>
+            <x>490</x>
+            <y>1890</y>
+            <width>341</width>
+            <height>32</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_aggregatedOutput">
+          <property name="geometry">
+           <rect>
+            <x>810</x>
+            <y>1540</y>
+            <width>21</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_30">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>710</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The index column for the facilities must have a unique identifier for each facility, and the identifier cannot be empty. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD to use as index</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_facilityIndex">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>710</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_14">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>320</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The index column for the population groups must have a unique identifier for each group, and the identifier cannot be empty. For census block groups, this is often the GEOID.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Select FIELD to use as index:</string>
+          </property>
+         </widget>
+         <widget class="QgsFieldComboBox" name="FieldComboBox_popIndex">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>320</y>
+            <width>291</width>
+            <height>27</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_15">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1280</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Which layer has the exclusion profile area?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Exclusion profile layer: &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_hasExclusionLayer">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1210</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_exportToCsv">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1440</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>1480</y>
+            <width>471</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Breaks down burden levels for each population group.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Per-area output layer (per-capita, per-population group)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_perPopulationOutput">
+          <property name="geometry">
+           <rect>
+            <x>810</x>
+            <y>1490</y>
+            <width>21</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_outFilePerPopulationGroup">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1490</y>
+            <width>261</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>1530</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aggregates burden across the population groups.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All-area (aggregated) output layer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_18">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>400</y>
+            <width>341</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>(If shapefile, can leave unchecked.)</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>10</y>
+            <width>811</width>
+            <height>141</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Social Burden Calculator (QGIS-based, v.0.1)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;Social Burden Calculator &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;(QGIS-based, v.0.1)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_20">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>150</y>
+            <width>811</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This Python-based QGIS plugin calculates distance-related social burden according to user inputs. Social burden is a metric for evaluating how difficult it is for people and communities to access critical services, whether during natural disasters or other emergencies, or from day to day. &lt;/p&gt;&lt;p/&gt;&lt;p&gt;Critical services are defined by the user (and ideally by the community whose burden is being measured), but often include 'food', 'fuel' or 'gas', and 'medical services'. Services are provided by facilities, which can be grouped into sectors. ‘Grocery stores’ is a sector, and ‘Jane’s Grocery on Main Street’ could be a specific facility within the grocery store sector. In general, grocery stores might provide food and water, but not fuel, while gas stations might provide food, water, and fuel, but not provide food and water to the same degree as grocery stores. &lt;/p&gt;&lt;p&gt;Difficulty in accessing services may be because facilities providing those services are far away, don't have adequate supplies, have long lines, or are shut down due to the emergency, among other potential problems. &lt;/p&gt;&lt;p&gt;This plugin describes the difficulty in accessing services specifically due to how far away the facilities providing those services are. For example, if a population group has only one facility that provides a service (say, on an island where there's only one hospital), if that facility is twice as far away, it's twice as burdensome to access the services it provides. &lt;/p&gt;&lt;p&gt;Informally, burden is “total effort required to get to  facilities, divided by the resources the population group has and the level of service provided”. Effort has two components: zero-distance effort, the effort required to go to facilities of a given sector even if no travel were involved, and per-foot effort, the effort required to go to facilities of a given sector based on how far away they are. &lt;/p&gt;&lt;p&gt;Resources, called ‘attainment factor,’ are a single number that represent the resources of the population group. This can be median income, but any sort of type of ability to attain resources can be used. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Hover over this text to learn more about social burden.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;For the paper that this derives from, click &lt;a href=&quot;https://www.osti.gov/biblio/1481633/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_6">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1640</y>
+            <width>821</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_21">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1660</y>
+            <width>311</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The ReNCAT tool takes similar inputs to this plugin, but they're formatted differently. To export a file formatted for the ReNCAT command line burden calculator, select 'yes' and provide a location to save the file to.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Export inputs for ReNCAT:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_exportToRencat">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1670</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_rencatInput">
+          <property name="geometry">
+           <rect>
+            <x>810</x>
+            <y>1710</y>
+            <width>21</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_outFileRencatInput">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1710</y>
+            <width>261</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_22">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1700</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location to which to save the file formatted for ReNCAT input.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save location for ReNCAT input:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line_7">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1750</y>
+            <width>821</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_outFileRencatOutput">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1830</y>
+            <width>261</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="checkBox_exportAsRencatOutput">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>1790</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_23">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1780</y>
+            <width>311</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The ReNCAT tool's results are formatted differently than the tables that this plugin provides. To export the results of the QGIS analysis formatted in the same style as the ReNCAT command line burden calculator would, select 'yes' and provide a location to save the file to. Not all information calculated by this plugin is calculated in the ReNCAT tool, so some information will not be included in the exported file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Export results in ReNCAT format:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_24">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>1820</y>
+            <width>321</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location to which to save the file formatted as ReNCAT output.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save location for ReNCAT input:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_rencatOutput">
+          <property name="geometry">
+           <rect>
+            <x>810</x>
+            <y>1830</y>
+            <width>21</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsfieldcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>layerComboBox_popBlock</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_popCount</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>714</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>874</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_popBlock</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_attainmentFactor</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>714</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>924</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_popBlock</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>ComboBox_centroidLat</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>714</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>784</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_popBlock</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>ComboBox_centroidLong</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>714</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>824</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_facilities</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_facilitySector</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>994</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>372</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_facilities</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>ComboBox_facilityLat</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>994</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>1054</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_facilities</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>ComboBox_facilityLong</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>994</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>1094</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_sectorServiceMapping</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_sectortoServiceSector</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>1154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_sectorServiceMapping</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_effortPerFoot</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>1154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>1194</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_sectorServiceMapping</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_effortZeroDistance</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>956</x>
+     <y>1154</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>1244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_box</sender>
+   <signal>accepted()</signal>
+   <receiver>SocialBurdenCalculatorDialogBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>941</x>
+     <y>1526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>SocialBurdenCalculatorDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>941</x>
+     <y>1526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_popBlock</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_popIndex</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>544</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>layerComboBox_facilities</sender>
+   <signal>layerChanged(QgsMapLayer*)</signal>
+   <receiver>FieldComboBox_facilityIndex</receiver>
+   <slot>setLayer(QgsMapLayer*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>544</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
