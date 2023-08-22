@@ -12,8 +12,8 @@ email=oehart@sandia.gov
 
 about=The social burden metric quantifies the burden a population experiences when attaining services needed from critical infrastructure. The burden metric is calculated using information about service-providing facilities, the services they provide and the levels at which they provide them, and their location relative to the people they serve. The burden calculation models these factors as services, facilities, and population blocks. The QGIS Social Burden Calculator Plugin calculates total, per-service, and per-population group social burden scores and provides the outputs in shapefile and tabular formats for visualizing, mapping, analyzing, and post-processing.
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/sandialabs/QGIS-social-burden-plugin/issues
+repository=https://github.com/sandialabs/QGIS-social-burden-plugin
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,9 +23,9 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=social burden,energy equity,infrastructure access, disaster planning
 
-homepage=http://homepage
+homepage=https://github.com/sandialabs/QGIS-social-burden-plugin
 category=Plugins
 icon=icon.png
 # experimental flag
