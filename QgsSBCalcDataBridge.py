@@ -219,8 +219,8 @@ class QgsSBCalcDataBridge:
                 "native:createpointslayerfromtable",
                 {
                     "INPUT": self.getPopulationLayerName(),
-                    "XFIELD": self.getPopulationLatField(),
-                    "YFIELD": self.getPopulationLongField(),
+                    "YFIELD": self.getPopulationLatField(),
+                    "XFIELD": self.getPopulationLongField(),
                     "TARGET_CRS": "ProjectCrs",
                     "OUTPUT": QgsProcessing.TEMPORARY_OUTPUT,
                 },
