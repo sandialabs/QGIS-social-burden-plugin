@@ -6,7 +6,7 @@
 name=Social Burden Calculator
 qgisMinimumVersion=3.0
 description=This plugin calculates social burden
-version=1.0
+version=1.01
 author=Olga E Hart
 email=oehart@sandia.gov
 
