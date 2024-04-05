@@ -87,6 +87,21 @@ Level of effort required to obtain services from a given sector even when no dis
 
 This plugin was designed and tested in Windows QGIS 3.28 and 3.30. Some early design was done in QGIS 3.22. No guarantees are given about compatibility with editions 2.x of QGIS, editions later than 3.30 or earlier than 3.22, or editions not run on Windows. Multiple editions of QGIS can be installed on the same machine simultaneously.
 
+NEW! The Social Burden plugin is now now live on the QGIS Python Plugins Repository. It references the latest github version of the plugin code. 
+As part of the QGIS Python Plugins Repository, the QGIS Social Burden Plugin can now be accessed and installed directly within QGIS. To load the Social Burden Plugin directly in QGIS:
+Step 1: Launch QGIS.
+Step 2: In the "Plugins" menu, go to "Manage and Install Plugins".
+Step 3: On the left-hand side of the resulting popup menu, click "All".
+Step 4: Type "Social Burden Calculator" in the search bar.
+Step 5: Click to select "Social Burden Calculator" from the dropdown list.
+Step 6: Click "Install Plugin".
+This installs the plugin. 
+
+The Social Burden plugin can also be downloaded from the QGIS Python Plugins Repository at: [QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/QGIS-social-burden-plugin-main/).
+Follow the installation instructions below to install from ZIP.
+
+Alternatively, installation can be performed from the github page:
+
 Step 1: Download this repository as a zip file. Or, git clone it and zip the resulting directory.
 
 Step 2: If QGIS is not already open, open it.
