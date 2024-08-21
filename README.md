@@ -89,15 +89,25 @@ This plugin was designed and tested in Windows QGIS 3.28 and 3.30. Some early de
 
 NEW! The Social Burden plugin is now now live on the QGIS Python Plugins Repository. It references the latest github version of the plugin code. 
 As part of the QGIS Python Plugins Repository, the QGIS Social Burden Plugin can now be accessed and installed directly within QGIS. To load the Social Burden Plugin directly in QGIS:
+
 Step 1: Launch QGIS.
+
 Step 2: In the "Plugins" menu, go to "Manage and Install Plugins".
+
 Step 3: On the left-hand side of the resulting popup menu, click "All".
+
 Step 4: Type "Social Burden Calculator" in the search bar.
+
 Step 5: Click to select "Social Burden Calculator" from the dropdown list.
+
 Step 6: Click "Install Plugin".
+
 This installs the plugin. 
 
+
+
 The Social Burden plugin can also be downloaded from the QGIS Python Plugins Repository at: [QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/QGIS-social-burden-plugin-main/).
+
 Follow the installation instructions below to install from ZIP.
 
 Alternatively, installation can be performed from the github page:
@@ -315,7 +325,7 @@ A helpful tutorial: https://www.qgistutorials.com/en/docs/3/performing_table_joi
 
 
 ## Roadmap
-If you are able to read this README, and there are features you'd like added, other changes, or suggested applications, let the corresponding developer know.
+If there are features you'd like added, other changes, or suggested applications, please let the corresponding developer know.
 
 
 ## Authors and acknowledgment
