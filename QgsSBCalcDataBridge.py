@@ -1,7 +1,10 @@
 import warnings
+import os
 import numpy as np
 import processing
 import tempfile
+from datetime import datetime
+
 from qgis.core import QgsProject
 from qgis.core import QgsVectorLayer
 from qgis.core import QgsField
@@ -94,6 +97,12 @@ class QgsSBCalcDataBridge:
 
         self._exportAsRencatOutput = None
         self._exportAsRencatOutputPath = None
+        
+        
+        #export fields for the per-population-per-facility-per-service interim 
+        # results. This is an easter egg and should NOT be set to True except by developer.
+        self._saveFacilityLevelResults = False
+        # self._perCapitaPerFacilityPerServiceTablePath = None #this is currently formed by deriving from other values
 
     def importDataFromDialog(self, dlg):
         """
@@ -455,7 +464,7 @@ class QgsSBCalcDataBridge:
 
         # we now know that there is such a field in the population layer
         # and what its index is.
-        if expected_type == "str" or expected_type == str:
+        if expected_type in ["str", "string"] or expected_type == str:
             return [i[idx] for i in self.getFacilitiesLayerData()]
         elif expected_type == "numeric" or expected_type in [int, float]:
             return np.array(
@@ -464,6 +473,9 @@ class QgsSBCalcDataBridge:
                     for i in self.getFacilitiesLayerData()
                 ]
             )
+        else: 
+            raise ValueError(f"Unexpected requested return type in getFacilityDataByFieldName(): {expected_type}.")
+
 
     def getFacilitiesLayerData(self):
         if self._facilitiesLayerData is None:
@@ -546,7 +558,7 @@ class QgsSBCalcDataBridge:
 
         # we now know that there is such a field in the population layer
         # and what its index is.
-        if expected_type == "str" or expected_type == str:
+        if expected_type == "str" or expected_type == str or expected_type=="string":
             return [i[idx] for i in self.getPopulationLayerData()]
         elif expected_type == "numeric" or expected_type in [int, float]:
             return np.array(
@@ -555,6 +567,8 @@ class QgsSBCalcDataBridge:
                     for i in self.getPopulationLayerData()
                 ]
             )
+        else: 
+            raise ValueError(f"Unexpected requested return type in getPopulationDataByFieldName(): {expected_type}.")
 
     def getPopulationLayerName(self):
         return self._populationLayerName
@@ -692,7 +706,7 @@ class QgsSBCalcDataBridge:
 
         # we now know that there is such a field in the layer
         # and what its index is.
-        if expected_type == "str" or expected_type == str:
+        if expected_type in ["str", "string"] or expected_type == str:
             return [i[idx] for i in self.getFacilityServiceLayerData()]
         elif expected_type == "numeric" or expected_type in [int, float]:
             return np.array(
@@ -701,6 +715,8 @@ class QgsSBCalcDataBridge:
                     for i in self.getFacilityServiceLayerData()
                 ]
             )
+        else: 
+            raise ValueError(f"Unexpected expeted type in getFacilityServiceDataByFieldName(): {expected_type}.")
 
     # ------ sector to service table getters --------
 
@@ -824,7 +840,32 @@ class QgsSBCalcDataBridge:
 
     def getExportAsRencatOutputPath(self):
         return self._exportAsRencatOutputPath
+        
+    
+        
+    def getSaveFacilityLevelResults(self): 
+        return self._saveFacilityLevelResults
+        
+    def getPerCapitaPerFacilityPerServiceTableOutputPath(self): 
+        now = datetime.now().strftime('%Y-%m-%d-%H%M')
+        if self.getPerCapitaCsvOutputPath() is None: 
+            raise ValueError("Can't save the interim benefits results without the per-capita csv file being saved, sorry. Do that first.")
+        outpath = os.path.join(
+            os.path.split(self.getPerCapitaCsvOutputPath())[0], 
+            f"perCapitaPerFacilityPerServiceBenefits-{now}.npy"
+        )
+        return outpath
 
+    def getPerCapitaPerFacilityPerServiceIndexOutputPath(self): 
+        now = datetime.now().strftime('%Y-%m-%d-%H%M')
+        if self.getPerCapitaCsvOutputPath() is None: 
+            raise ValueError("Can't save the interim benefits results without the per-capita csv file being saved, sorry. Do that first.")
+        outpath = os.path.join(
+            os.path.split(self.getPerCapitaCsvOutputPath())[0], 
+            f"perCapitaPerFacilityPerServiceBenefitsIndices-{now}.json"
+        )
+        return outpath
+    
     # -----------------SETTERS------------------
 
     # ---- facility setters ----

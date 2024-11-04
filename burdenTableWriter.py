@@ -1,5 +1,8 @@
 import tempfile
+import json
 import pandas as pd
+import numpy as np
+
 from . import QgsSBCalcDataBridge
 from . import SBCalculator
 
@@ -123,3 +126,38 @@ class burdenTableWriter:
         Exports as CSV to specified path.
         """
         table.to_csv(path, index=False)
+
+    def exportPerCapitaPerFacilityPerServiceBenefits(self, 
+        arr: np.array, 
+        pop_indices: list, 
+        facility_indices:list, 
+        service_indices: list,
+        tablepath:str, 
+        indexpath:str
+        ): 
+        """
+        This is experimental code. For certain applications, researchers may want to know
+        the burden reduction associated with each facility. The table is an 
+        interim calculation of /benefits/ and can be processed in some other
+        script to provide those figures. These are NOT burden values.
+        
+        Because the table itself is 3-dimensional in numpy, we'll use the built-in
+        numpy.save function. It will be saved to the same folder as the csv exports, 
+        which are mandatory if using this function.
+        
+        Facility ordering, services, and so on, will be written to a separate file
+        in that same folder as json.
+        
+        """
+        with open(tablepath, 'wb') as f: 
+            np.save(tablepath, arr)
+        with open(indexpath, 'w') as f: 
+            json.dump(
+                {
+                    'population indices': pop_indices, 
+                    'facility indices': facility_indices, 
+                    'service indices': service_indices
+                }, 
+                f
+            )
+            

@@ -1,5 +1,6 @@
 import numpy as np
 import warnings, pdb
+from datetime import datetime
 
 from . import QgsSBCalcDataBridge
 
@@ -18,6 +19,10 @@ class SBCalculator:
         self._populationToFacilitiesDistances = None  # this is derived, not set
 
         self._burdenArray = None  # this is derived, not set.
+        
+        self._saveFacilityLevelBenefits = None #boolean
+        self._facilityLevelBenefits = None #this is experimental and extremely memory-expensive - should be None unless 
+        # you are the developer
 
         self.importFromDataBridge(dataBridge)  # make sure all fields are filled
 
@@ -54,6 +59,11 @@ class SBCalculator:
             )
             * 3.28084  # convert meters to feet
         )
+        
+        self.setSaveFacilityLevelBenefits(
+            dataBridge.getSaveFacilityLevelResults()
+        )
+
 
     def _calculatePerCapitaPerFacilityBurden(self):
         """Calculate per-person benefits from each facility/cbg pairing for each service type.
@@ -133,6 +143,11 @@ class SBCalculator:
         per_capita_per_facility_benefit_arr = numerator / (
             denominator.reshape((denominator.shape[0], denominator.shape[1], 1))
         )
+        
+        #easter egg for researcher: if we need to look at facility-level benefits, this is where
+        # they're saved, if the settings are told to do so
+        if self.getSaveFacilityLevelBenefits(): 
+            self.setPerFacilityBenefits(per_capita_per_facility_benefit_arr)
 
         # #we now have the per-capita burden-grouped benefits,
         # broken out by service
@@ -262,6 +277,12 @@ class SBCalculator:
         return np.sum(
             self._populationArray.reshape((-1, 1)) * self.getBurdenArray(), axis=0
         )
+        
+    def getSaveFacilityLevelBenefits(self): 
+        return self._saveFacilityLevelBenefits
+      
+    def getFacilityLevelBenefits(self): 
+        return self._facilityLevelBenefits
 
     # --------setters --------
 
@@ -285,3 +306,9 @@ class SBCalculator:
 
     def setPopulationArray(self, data: np.array):
         self._populationArray = data
+
+    def setSaveFacilityLevelBenefits(self, setting:bool): 
+        self._saveFacilityLevelBenefits = setting
+    
+    def setPerFacilityBenefits(self,data: np.array): 
+        self._facilityLevelBenefits = data

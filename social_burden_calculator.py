@@ -288,3 +288,22 @@ class SocialBurdenCalculator:
                     f"file:///{tempfile_perArea.name}",
                     f"file:///{tempfile_allArea.name}",
                 )
+                
+            #write out interim facility-level benefits info. This is experimental
+            #and to be used only by developer, and is not part of the standard 
+            # functions of this plugin.
+            if dataBridge.getSaveFacilityLevelResults(): 
+                BTW.exportPerCapitaPerFacilityPerServiceBenefits(
+                    SBC.getFacilityLevelBenefits(), #numpy array with the benefits [NOT burdens]
+                    dataBridge.getPopulationDataByFieldName( #the index column of the population data
+                        fieldname=dataBridge.getPopulationIndexField(),
+                        expected_type='string'
+                    ),  
+                    dataBridge.getFacilityDataByFieldName( #index column of the facilities
+                        fieldname=dataBridge.getFacilityIndexField(),
+                        expected_type='string'
+                    ), 
+                    dataBridge.getServiceNames(), # list of services, e.g. 'water'
+                    dataBridge.getPerCapitaPerFacilityPerServiceTableOutputPath(), #path for the numpy array to be written to
+                    dataBridge.getPerCapitaPerFacilityPerServiceIndexOutputPath() #path for the index columns to be written to as json
+                )
