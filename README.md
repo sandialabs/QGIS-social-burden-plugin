@@ -7,32 +7,49 @@ QGIS Social Burden plugin
 ## Description
 
 ### What is Social Burden?
-Social infrastructure service burden (abbreviated “Social Burden”) refers to the effort people must expand to meet their daily needs relative to their ability to perform this activity. It helps answer the question of how equitably (or inequitably) critical services are available across an area of interest, considering not only the location and quality of the available services, but also their availability to more vulnerable individuals within the community.
- 
-Social Burden considers the full “basket” of people’s day-to-day needs that are critical for sustaining ongoing physical and mental well-being. These services include access to adequate food, clean water, shelter, fuel, medical care, financial services, communications, emergency logistics, evacuation, transportation, waste management, and other services. These are services that are provided by (or dependent on) the continued operation of infrastructure outside of the home. For example, access to clean water depends on the continued operation of pumping wells, water treatment facilities, and the pipes supplying water to homes, or, to the operation of stores selling bottled water.  
+Social infrastructure service burden (abbreviated “Social Burden”) refers to the effort people must expend to meet their daily 
+needs relative to their ability to perform this activity. It helps answer the question of how critical services are distributed 
+across an area of interest, considering not only the location but also the quantity and quality of the available services, and 
+their availability to all living within the study area.
 
-In energy planning, Social Burden is being used as an equity and resilience metric, helping communities better understand and be able to communicate to others the full implications of power outages, and the resiliencies (or redundancies) built into the energy system or the community’s infrastructure/services.
+Social Burden considers the full “basket” of people’s day-to-day needs that are critical for sustaining ongoing physical and 
+community well-being. These services include access to adequate food, clean water, shelter, fuel, safety, medical care, 
+financial services, security, communications, emergency logistics, evacuation, transportation, waste management, and other 
+services. These are services that are provided by (or dependent on) the continued operation of infrastructure outside of the 
+home. For example, in many communities, access to safe drinking  water depends on the continued operation of pumping wells, 
+water treatment facilities, and the pipes supplying water to homes, or, to the operation of stores selling bottled water.
 
-In other contexts (such as urban planning), social burden can be used as a quantitative measure of the availability, and the equity in access, of critical infrastructure and services. It can help inform equitable siting or zoning decisions and provide an interface to other emergency and resilience planning efforts. 
+Social Burden is a quantitative measure of the availability and accessibility of critical infrastructure and services. In 
+energy planning, it is being used to better understand the impacts of power disruptions as a result of interdependencies
+ between the power and other sectors (e.g. water, communications, etc.), and how resiliencies (or redundancies) can be 
+ designed to mitigate impacts. Beyond energy, Social Burden can also provide an interface to other emergency and resilience 
+ planning efforts. 
 
 For more information on Social Burden, refer to the 2022 Social Burden white paper by Wachtel et al., available for free public download at: https://www.osti.gov/biblio/1846088.
 
 ### Plugin Description
 
-This plugin calculates Social Burden scores, both aggregated and disaggregated, across different critical service types (e.g., food, water, medical care, shelter, etc.) and population groupings (e.g., per-capita, per population sub-group, per study area). Results are output in both tabular and geospatial formats. This plugin can also generate auto-formatted JSON input files for follow-on optimization using the Resilient Node Cluster Analysis Tool (ReNCAT). For more information about ReNCAT, refer to the 2022 ReNCAT white paper by Wachtel et al, available for download at: https://www.osti.gov/servlets/purl/1880920). 
+This plugin calculates Social Burden scores, both aggregated and disaggregated, across different critical service types 
+(e.g., food, water, medical care, shelter, etc.) and population groupings (e.g., per-capita, per population sub-group, 
+per study area). Results are output in both tabular and geospatial formats. This plugin can also generate auto-formatted 
+JSON input files for follow-on optimization using the Resilient Node Cluster Analysis Tool (ReNCAT). For more information 
+about ReNCAT refer 
+ to the 2022 ReNCAT white paper by Wachtel et al, available for download at: https://www.osti.gov/servlets/purl/1880920). 
 
 
 ###  Suitable Applications for the QGIS Social Burden Plugin
 
-The Social Burden plugin can be used to identify “hotspots” of need in a community, broken down by food access, medical care, and any other relevant services.
+The Social Burden plugin can be used to understand how critical infrastructure and the services it provides is 
+distributed relative to where people live and access it.
 
-By modifying the inputs to design different hypothetical configurations of people, facilities, and services, it can also be used to test “what if” scenarios, and answer questions like:
+By modifying the inputs to design different hypothetical configurations of people, facilities, and services, 
+it can also be used to test “what if” scenarios, and answer questions like:
 
-* Where should I locate a new community clinic so that the medical services it provides can be allocated in the most equitable and least redundant (most impactful) way? 
+* Where should I locate a new urgent care facility so that the medical services it provides can be allocated  in the most impactful way?
 
-* Which existing facilities are the most important to keep up and running? During a grid outage, which facilities are most important to provide redundant power to (e.g., backup generators, microgrids, etc)?
-
-* What impact would a power outage have on my community? How does social burden differ between the day-to-day when all facilities are operating as usual ("blue sky"), and emergency scenarios when some facilities are down and the power is out ("black sky")?
+* Which existing facilities are the most important to keep up and running? During a grid outage, which facilities are most important to provide redundant power to (e.g., backup generators, microgrids, etc.)?
+ 
+* What impact would a power outage have on people’s ability to access critical services? 
 
 
 
@@ -50,7 +67,7 @@ The effort per foot is an estimate of the additional effort that is required to 
 
 ###  exclusion profile
 
-An exclusion profile is an optional parameter. An exclusion profile is a polygon that reduces the level of service at facilities that fall within its boundaries, or entirely excludes (removes) them from the analysis. The exclusion profile can be used to simplify setting up “black-sky” analyses, by specifying certain polygons within the study area in which the power is out. It can also be used to represent areas of likely hazards, like flooding, and evaluate the impacts to social burden if the facilities falling within the flood zones are unreachable to the population, whether or not they have power.
+An exclusion profile is an optional parameter. An exclusion profile is a polygon that reduces the level of service at facilities that fall within its boundaries, or entirely excludes (removes) them from the analysis. The exclusion profile can be used to simplify setting up “power outage” analyses, by specifying certain polygons within the study area in which the power is out. It can also be used to represent areas of likely hazards, like flooding, and evaluate the impacts to social burden if the facilities falling within the flood zones are unreachable to the population, whether or not they have power.
 
 ###  facility
 
@@ -58,7 +75,7 @@ A facility is a specific instance of infrastructure (most commonly, a specific b
 
 ###  population group
 
-A population group is the smallest (most granular) unit of measurement of a study area’s entire population. All individuals within a population group will be treated the same and will have the same social burden scores. Travel distances to facilities and services are calculated from the centroid of the population group polygons. There are no mechanistic limits on the upper or lower bound of the size of a population group. Practically, census block groups are frequently used as population groups, because U.S. Census data on population counts and median household incomes are available at that reporting level. However, population groups can be smaller (e.g., individual households) or larger (e.g., census tracks) depending on the data available. 
+A population group is the smallest (most granular) unit of measurement of a study area’s entire population. All individuals within a population group will be treated the same and will have the same social burden scores. Travel distances to facilities and services are calculated from the centroid of the population group polygons. There are no mechanistic limits on the upper or lower bound of the size of a population group. Practically, census block groups are frequently used as population groups, because U.S. Census data on population counts and median household incomes are available at that reporting level. However, population groups can be smaller (e.g., individual households) or larger (e.g., census tracts) depending on the data available and study objectives. 
 
 ###  sector
 
@@ -85,34 +102,18 @@ Level of effort required to obtain services from a given sector even when no dis
 
 ## Installation
 
-This plugin was designed and tested in Windows QGIS 3.28 and 3.30. Some early design was done in QGIS 3.22. No guarantees are given about compatibility with editions 2.x of QGIS, editions later than 3.30 or earlier than 3.22, or editions not run on Windows. Multiple editions of QGIS can be installed on the same machine simultaneously.
-
-NEW! The Social Burden plugin is now now live on the QGIS Python Plugins Repository. It references the latest github version of the plugin code. 
-As part of the QGIS Python Plugins Repository, the QGIS Social Burden Plugin can now be accessed and installed directly within QGIS. To load the Social Burden Plugin directly in QGIS:
-
-Step 1: Launch QGIS.
-
-Step 2: In the "Plugins" menu, go to "Manage and Install Plugins".
-
-Step 3: On the left-hand side of the resulting popup menu, click "All".
-
-Step 4: Type "Social Burden Calculator" in the search bar.
-
-Step 5: Click to select "Social Burden Calculator" from the dropdown list.
-
-Step 6: Click "Install Plugin".
-
-This installs the plugin. 
-
-
-
-The Social Burden plugin can also be downloaded from the QGIS Python Plugins Repository at: [QGIS Python Plugins Repository](https://plugins.qgis.org/plugins/QGIS-social-burden-plugin-main/).
-
-Follow the installation instructions below to install from ZIP.
-
-Alternatively, installation can be performed from the github page:
+This plugin was designed and tested in Windows QGIS 3.28 and 3.30, and has been used successfully but not tested in 3.38. 
+Some early design was done in QGIS 3.22. No 
+guarantees are given about compatibility with editions 2.x of QGIS, editions later than 3.30 or earlier than 3.22, 
+or editions not run on Windows. Multiple editions of QGIS can be installed on the same machine simultaneously.
 
 Step 1: Download this repository as a zip file. Or, git clone it and zip the resulting directory.
+
+Note: to download as a zip, click to the green "Code" dropdown button at the top of the list of files, and select "Download ZIP".
+
+![A screen capture showing the button for downloading as a zip file.](./readme-screencaps/download-zip.png)
+
+
 
 Step 2: If QGIS is not already open, open it.
 
@@ -120,16 +121,22 @@ Step 3: In the "Plugins" menu, go to "Manage and Install Plugins".
 
 Step 4: On the left-hand side of the resulting popup menu, click "Install from ZIP".
 
-Step 5: Click the "..." button on the right-hand side of the "ZIP file" path box, navigate to the zip file with the downloaded plugin, and select it/hit ok.
+Step 5: Click the "..." button on the right-hand side of the "ZIP file" path box, navigate to the zip file with the downloaded plugin, and select it/hit Open.
 
 Step 6: Click "install plugin".
 
 This installs the plugin.
 
 
+## Examples
+
+For a basic example of using the plugin, introducing novice users to the plugin's options and how files should look, see the "examples" folder and its documentation.
+
 
 
 ## Usage 
+
+This section provides a detailed overview of the plugin's menu. For a more basic example, see the "Examples" section above.
 
 ###   Inputs
 
@@ -138,7 +145,7 @@ This plugin relies on a minimum of 3 items:
 	* indexing column or other set of unique identifiers for each population group
 	* location (specified latitude and longitude, or polygon shapefile in lat/long CRS) 
 	* 'weight' (usually population count)
-	* 'attainment factor' (how much they have in resources; currently attainment factor must be a scalar for each population group).
+	* 'attainment factor' (usually income; currently attainment factor must be a scalar for each population group).
 	
 	Ideally this file is a shapefile.
 2. facility information, including: 
@@ -165,20 +172,20 @@ Optional items:
 ###   Input formatting
 1. Population group information
 	
-	![A screen capture of example population group information, with each row showing a different population group and each column describing a piece of information about that population group.](./readme-example-screencaps/example-population-group-screencap.PNG)
+	![A screen capture of example population group information, with each row showing a different population group and each column describing a piece of information about that population group.](./readme-screencaps/example-population-group-screencap.PNG)
 
 	The above image shows an example set of population groups and some information about them. Not all this information is used. In our example below, we will be using the 'GEOID' (as index), 'ACS_2019_5' (median income in the 2019 American Community Survey), and 'ACS_2019_1' (population in the 2019 ACS community survey) fields. Other data fields do not need to be scrubbed prior to social burden analysis, but will not be used in the calculations.
 
 2. Facility information
 
-	![A screen capture of example facility information, with each row showing a different facility and each column describing a piece of information about that facility.](./readme-example-screencaps/example-facility-screencap.PNG)
+	![A screen capture of example facility information, with each row showing a different facility and each column describing a piece of information about that facility.](./readme-screencaps/example-facility-screencap.PNG)
 
 	The above image shows an example set of facilities from a shapefile, and some information about them. Not all this information is used. In our example below, we will be using the "OBJECTID" (as index) and "Category" (indicating the facility's sector) columns.
 
 
 3. Sector to service mapping table
 
-	![A screen capture of example sector to service mapping information. Each row describes a different sector, while each column describes a different service level or effort parameter for that sector.](./readme-example-screencaps/example-sector-to-service-screencap.PNG)
+	![A screen capture of example sector to service mapping information. Each row describes a different sector, while each column describes a different service level or effort parameter for that sector.](./readme-screencaps/example-sector-to-service-screencap.PNG)
 
 	The above image shows an example sector to service mapping table. Each row describes one sector, and each column describes some information about that sector. All columns will be used. Note the special columns "zero-distance effort" and "effort per foot", which represent the effort required to visit facilities of this sector even if no travel is required, and the effort required for each foot of travel between the population group's centroid/location and the facilities of that sector, respectively.
 
@@ -190,7 +197,7 @@ If the effort or service levels are intended to be different for each facility, 
 
 4. Exclusion layer (optional)
 
-	An exclusion layer is a shape or other geographic layer that can be overlaid or intersected with the set of facilities in order to determine which facilities should have their service levels degraded. At this time, only one exclusion layer, and only a single service degradation percentage (0-100), are supported.
+	An exclusion layer is a shape or other geographic layer that can be overlaid or intersected with the set of facilities in order to determine which facilities should have their service levels degraded to simulate the impacts of partial or complete facility damage. At this time, only one exclusion layer, and only a single service degradation percentage (0-100), are supported.
 
 
 
@@ -200,7 +207,7 @@ If the effort or service levels are intended to be different for each facility, 
 
 2. The resulting popup menu should look like this (note that the screencap cuts off the bottom of the menu): 
 
-	![A screencap of a portion of the social burden calculator plugin's menu.](./readme-example-screencaps/20230118-plugin-menu.PNG)
+	![A screencap of a portion of the social burden calculator plugin's menu.](./readme-screencaps/20230118-plugin-menu.PNG)
 
 	Although the layer and field names may differ depending on the layers available and the fields contained therein. 
 	
@@ -219,7 +226,7 @@ If the effort or service levels are intended to be different for each facility, 
 		
 	4. In "Select FIELD for Population Counts," select the field indicating the weight (population, number of people) of each population group.
 	
-	5. In "Select FIELD for Attainment Factors," select whatever field is being used to indicate the population group's abilities or attainment factor (usually this is income).
+	5. In "Select FIELD for Attainment Factors," select whatever field is being used to indicate the population group's attainment factor (usually this is income).
 	
 4. Facilities information: 
 
@@ -242,10 +249,10 @@ If the effort or service levels are intended to be different for each facility, 
 	
 	2. Select which field name contains the sector names.
 	
-	3. Select which field represents sector factilites' effort per foot.
+	3. Select which field represents sector facilites' effort per foot.
 	
 	4. Select which field represents sector facilities' zero-distance effort, 
-		the effort required even if visiting facilites of that sector requires no travel.
+		the effort required even if visiting facilities of that sector requires no travel.
 	
 6. (optional) Exclusion layer: 
 
@@ -325,7 +332,7 @@ A helpful tutorial: https://www.qgistutorials.com/en/docs/3/performing_table_joi
 
 
 ## Roadmap
-If there are features you'd like added, other changes, or suggested applications, please let the corresponding developer know.
+If you are able to read this README, and there are features you'd like added, other changes, or suggested applications, let the corresponding developer know.
 
 
 ## Authors and acknowledgment

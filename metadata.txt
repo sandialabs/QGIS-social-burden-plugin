@@ -6,7 +6,7 @@
 name=Social Burden Calculator
 qgisMinimumVersion=3.0
 description=This plugin calculates social burden
-version=1.01
+version=1.3
 author=Olga E Hart
 email=oehart@sandia.gov
 
@@ -23,7 +23,7 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=social burden,energy equity,infrastructure access, disaster planning
+tags=python
 
 homepage=https://github.com/sandialabs/QGIS-social-burden-plugin
 category=Plugins

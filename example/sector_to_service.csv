@@ -1,0 +1,4 @@
+Facility_type,zero-distance effort,effort per foot,Food,Water,Medical Service,Fuel
+gas station,0.4,0.05,,,,2
+grocery store,0.4,0.05,2,1,,
+hospital,0.4,0.05,,,3,
